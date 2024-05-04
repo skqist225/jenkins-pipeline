@@ -1,6 +1,15 @@
+// def pauseExecution(duration) {
+//     def milliseconds = duration * 1000
+//     Thread.sleep(milliseconds)
+// }
+
 def pauseExecution(duration) {
-    def milliseconds = duration * 1000
-    Thread.sleep(milliseconds)
+    def startTime = System.currentTimeMillis()
+    def endTime = startTime + duration * 1000
+    
+    while (System.currentTimeMillis() < endTime) {
+        // Do nothing, just wait
+    }
 }
 
 pipeline {
