@@ -22,11 +22,10 @@ pipeline {
                             if (timeToGetInfo % 2 == 0) {
                                 println "Checking ..."
                             }
-                            timestamps {
-                                sh '''
-                                    sleep 60 > /dev/null 2>&1
-                                '''
-                            }
+                            sh '''
+                                set +x
+                                sleep 60 > /dev/null 2>&1
+                            '''
                             timeToGetInfo += 1
                         }
                     }
