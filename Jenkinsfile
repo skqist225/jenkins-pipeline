@@ -22,7 +22,7 @@ pipeline {
                             if (timeToGetInfo % 2 == 0) {
                                 println "Checking ..."
                             }
-                            sh "sleep 60 > /dev/null", returnStdout: false
+                            sh script: "sleep 60 > /dev/null", returnStdout: false
                             timeToGetInfo += 1
                         }
                     }
