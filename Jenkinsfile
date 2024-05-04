@@ -1,3 +1,8 @@
+def pauseExecution(duration) {
+    def milliseconds = duration * 1000
+    Thread.sleep(milliseconds)
+}
+
 pipeline {
     agent any
 
@@ -22,7 +27,8 @@ pipeline {
                             if (timeToGetInfo % 2 == 0) {
                                 println "Checking ..."
                             }
-                            sh "#!/bin/sh -e\n" + "sleep 60 > /dev/null 2>&1"
+                            // sh "#!/bin/sh -e\n" + "sleep 60 > /dev/null 2>&1"
+                            pauseExecution(10)
                             timeToGetInfo += 1
                         }
                     }
