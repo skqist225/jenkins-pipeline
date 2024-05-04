@@ -4,8 +4,16 @@
 // }
 
 def pauseExecution(duration) {
-    def lock = new Object()
-    lock.wait(duration * 1000)
+    def lock = { }
+    lock.withLock {
+        new Timer().schedule(new TimerTask() {
+            @Override
+            void run() {
+                lock.notify()
+            }
+        }, duration * 1000)
+        lock.wait()
+    }
 }
 
 pipeline {
