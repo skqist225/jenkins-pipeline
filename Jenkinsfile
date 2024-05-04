@@ -22,10 +22,7 @@ pipeline {
                             if (timeToGetInfo % 2 == 0) {
                                 println "Checking ..."
                             }
-                            sh '''
-                                set +x
-                                sleep 60 > /dev/null 2>&1
-                            '''
+                            sh "#!/bin/sh -e\n" + "sleep 60 > /dev/null 2>&1"
                             timeToGetInfo += 1
                         }
                     }
