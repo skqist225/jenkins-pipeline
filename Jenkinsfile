@@ -1,12 +1,6 @@
-// def pauseExecution(duration) {
-//     def milliseconds = duration * 1000
-//     Thread.sleep(milliseconds)
-// }
-
 def pauseExecution(duration) {
-    def lock = { }
-    lock()
-    lock.wait(duration * 1000)
+    def milliseconds = duration * 1000
+    Thread.sleep(milliseconds)
 }
 
 pipeline {
