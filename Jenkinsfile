@@ -1,6 +1,11 @@
+// def pauseExecution(duration) {
+//     def milliseconds = duration * 1000
+//     Thread.sleep(milliseconds)
+// }
+
 def pauseExecution(duration) {
-    def milliseconds = duration * 1000
-    Thread.sleep(milliseconds)
+    def lock = new Object()
+    lock.wait(duration * 1000)
 }
 
 pipeline {
@@ -28,7 +33,7 @@ pipeline {
                                 println "Checking ..."
                             }
                             // sh "#!/bin/sh -e\n" + "sleep 60 > /dev/null 2>&1"
-                            pauseExecution(10)
+                            pauseExecution(60)
                             timeToGetInfo += 1
                         }
                     }
