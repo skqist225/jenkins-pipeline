@@ -5,15 +5,8 @@
 
 def pauseExecution(duration) {
     def lock = { }
-    lock.withLock {
-        new Timer().schedule(new TimerTask() {
-            @Override
-            void run() {
-                lock.notify()
-            }
-        }, duration * 1000)
-        lock.wait()
-    }
+    lock()
+    lock.wait(duration * 1000)
 }
 
 pipeline {
