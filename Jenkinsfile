@@ -23,6 +23,7 @@ pipeline {
         stage("Do") {
             steps {
                 script {
+                    println params.TEST_2
                     sh "ls ${WORKSPACE}"
                     sh "echo 123"
 
