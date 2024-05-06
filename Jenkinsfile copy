@@ -1,0 +1,34 @@
+// def pauseExecution(duration) {
+//     def milliseconds = duration * 1000
+//     Thread.sleep(milliseconds)
+// }
+
+def pauseExecution(duration) {
+    def startTime = System.currentTimeMillis()
+    def endTime = startTime + duration * 1000
+    while (System.currentTimeMillis() < endTime) {}
+}
+
+pipeline {
+    agent any
+
+    stages {
+        stage("Do") {
+            steps {
+                script {
+                    build job: "TestPipeline", parameters: [
+                        string(name: "TEST_1", value: "Hello 1"),
+                        string(name: "TEST_2", value: "Hello 2")
+                    ]
+                }
+            }
+        }
+        stage("Done") {
+            steps {
+                script {
+                    sh "echo 456"
+                }
+            }
+        }
+    }
+}

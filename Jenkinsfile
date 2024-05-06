@@ -12,6 +12,13 @@ def pauseExecution(duration) {
 pipeline {
     agent any
 
+    parameters {
+        string(
+            name: "TEST_1",
+            defaultValue: "Hello World"
+        )
+    }
+
     stages {
         stage("Do") {
             steps {
